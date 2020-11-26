@@ -1,8 +1,8 @@
-site_name: 'Finite volume methods'
+site_name: 'SaDS model'
 theme:
     name: material
     icon:
-      logo: material/triangle-outline
+      logo: fontawesome/solid/mountain
     palette:
       - sheme: default
         primary: cyan
