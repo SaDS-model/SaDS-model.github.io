@@ -243,8 +243,9 @@
                 
                 
                 <h1 id="model-configuration">Model configuration</h1>
-<p>SaDS has an extensive list of input parameters and options to configure your model runs. The table below lists the parameters, default values, and some notes about changing their values.</p>
-<p><strong>Tunable parameters</strong></p>
+<p>SaDS has an extensive list of input parameters and options to configure your model runs. The table below lists the parameters, default values, and some notes about changing their values. Parameters are changable as <code>params.Name</code>, where <code>Name</code> is the name given in the tables below.</p>
+<p><strong>Tunable parameters</strong>
+These are physical parameters that you can tune to adjust the model's behaviour (in contrast to physical constants that should not be changed).</p>
 <table>
 <thead>
 <tr>
@@ -320,6 +321,88 @@
 <td>1e-3</td>
 <td>Minimum incision depth before channel melts at same rate as sheet.</td>
 <td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Switches</strong>
+These options turn on and off features or switch between different methods.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Default Value</th>
+<th>Other choices</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>exchange</code></td>
+<td><code>true</code></td>
+<td><code>false</code></td>
+<td>Choose whether to allow mass exchange between sheet and channels</td>
+<td></td>
+</tr>
+<tr>
+<td><code>model</code></td>
+<td><code>coupled</code></td>
+<td><code>sheet</code>, <code>channel</code></td>
+<td>Choose whether to run full (coupled) model, or sheet-only or channel-only.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>advection</code></td>
+<td><code>upwind</code></td>
+<td><code>central</code></td>
+<td>Choose numerical flux scheme</td>
+<td><code>upwind</code> is strongly preferred and is much more stable.</td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td><code>constant</code></td>
+<td><code>ratio</code></td>
+<td>Choose whether channel width is constant or a ratio of incision depth</td>
+<td></td>
+</tr>
+<tr>
+<td><code>Xi_s</code></td>
+<td>0</td>
+<td>1</td>
+<td>Heat dissipation in sheets. Set to 0 for no heat dissipation, 1 to allow dissipation.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Solver parameters</strong>
+These options change the numerical ODE solver or control its behaviour.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Default Value</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>solver</code></td>
+<td><code>odeRK</code></td>
+<td>Which ODE solver function to use. Could also be <code>ode45</code>, or any other Matlab solver.</td>
+<td><code>odeRK</code> runs the best.</td>
+</tr>
+<tr>
+<td><code>opts</code></td>
+<td><code>odeset</code></td>
+<td>Options to pass to the solver, e.g. <code>opts = odeset('RelTol', 1e-4)</code>.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>tol</code></td>
+<td>1e-1</td>
+<td>Numerical tolerance, see (???)</td>
+<td>Always check the convergence!</td>
 </tr>
 </tbody>
 </table>
