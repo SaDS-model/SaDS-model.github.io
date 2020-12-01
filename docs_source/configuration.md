@@ -3,6 +3,7 @@ SaDS has an extensive list of input parameters and options to configure your mod
 
 
 **Tunable parameters**
+
 These are physical parameters that you can tune to adjust the model's behaviour (in contrast to physical constants that should not be changed).
 
 | Name | Default Value | Description | Notes |
@@ -20,6 +21,7 @@ These are physical parameters that you can tune to adjust the model's behaviour 
 | `Hmin` | 1e-3 | Minimum incision depth before channel melts at same rate as sheet. | |
 
 **Switches**
+
 These options turn on and off features or switch between different methods.
 
 | Name | Default Value | Other choices | Description | Notes |
@@ -31,6 +33,7 @@ These options turn on and off features or switch between different methods.
 | `Xi_s` | 0 | 1 | Heat dissipation in sheets. Set to 0 for no heat dissipation, 1 to allow dissipation. | |
 
 **Solver parameters**
+
 These options change the numerical ODE solver or control its behaviour.
 
 | Name | Default Value | Description | Notes |
