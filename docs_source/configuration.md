@@ -1,4 +1,9 @@
 # Model configuration
+
+## Specifying your domain and forcing
+
+## Parameters, switches, and options
+
 SaDS has an extensive list of input parameters and options to configure your model runs. The table below lists the parameters, default values, and some notes about changing their values. Parameters are changable as `params.Name`, where `Name` is the name given in the tables below.
 
 
