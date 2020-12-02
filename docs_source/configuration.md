@@ -37,6 +37,7 @@ These options turn on and off features or switch between different methods.
 | `width` | `constant` | `ratio` | Choose whether channel width is constant or a ratio of incision depth | |
 | `Xi_s` | 0 | 1 | Heat dissipation in sheets. Set to 0 for no heat dissipation, 1 to allow dissipation. | |
 | `channel_weights` | `distance` | `depth` | Weight least-squares problem in channels by inverse distance (`distance`) or water depth (`depth`) | TESTING ONLY |
+| `overwrite` | `false` | `true` | Overwrite existing output files. If `false` and a file exists, append the time to the end of the filename. | |
 
 **Solver parameters**
 
