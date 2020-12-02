@@ -36,6 +36,7 @@ These options turn on and off features or switch between different methods.
 | `advection` | `upwind` | `central` | Choose numerical flux scheme | `upwind` is strongly preferred and is much more stable. |
 | `width` | `constant` | `ratio` | Choose whether channel width is constant or a ratio of incision depth | |
 | `Xi_s` | 0 | 1 | Heat dissipation in sheets. Set to 0 for no heat dissipation, 1 to allow dissipation. | |
+| `channel_weights` | `distance` | `depth` | Weight least-squares problem in channels by inverse distance (`distance`) or water depth (`depth`) | TESTING ONLY |
 
 **Solver parameters**
 
