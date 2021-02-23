@@ -20,6 +20,7 @@ nav:
         - Getting started:
                 - Configuration: configuration.md
         - Finite volume methods:
+                - Background: finite-volume.md
                 - Shallow water equations: shallow_water.md
                 - Heat equation: heat_equation.md
           

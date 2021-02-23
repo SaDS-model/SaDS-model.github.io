@@ -9,19 +9,19 @@
       
       
       
-      <link rel="shortcut icon" href="/assets/images/favicon.png">
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.6">
     
     
       
-        <title>Subaerial Drainage System Model (SaDS)</title>
+        <title>Background - Subaerial Drainage System Model (SaDS)</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.6910b76c.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.6910b76c.min.css">
       
         
-        <link rel="stylesheet" href="/assets/stylesheets/palette.196e0c26.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.196e0c26.min.css">
         
       
     
@@ -58,6 +58,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#finite-volume-methods-for-conservation-laws" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -67,7 +72,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
-    <a href="/." title="Subaerial Drainage System Model (SaDS)" class="md-header-nav__button md-logo" aria-label="Subaerial Drainage System Model (SaDS)">
+    <a href=".." title="Subaerial Drainage System Model (SaDS)" class="md-header-nav__button md-logo" aria-label="Subaerial Drainage System Model (SaDS)">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M634.92 462.7l-288-448C341.03 5.54 330.89 0 320 0s-21.03 5.54-26.92 14.7l-288 448a32.001 32.001 0 00-1.17 32.64A32.004 32.004 0 0032 512h576c11.71 0 22.48-6.39 28.09-16.67a31.983 31.983 0 00-1.17-32.63zM320 91.18L405.39 224H320l-64 64-38.06-38.06L320 91.18z"/></svg>
@@ -84,7 +89,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              
+              Background
             
           </span>
         </div>
@@ -131,7 +136,9 @@
         
           
 
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       
@@ -139,9 +146,7 @@
   <li class="md-tabs__item">
     
     
-      
-    
-    <a href="/." class="md-tabs__link md-tabs__link--active">
+    <a href=".." class="md-tabs__link">
       Home
     </a>
   </li>
@@ -153,7 +158,7 @@
     <li class="md-tabs__item">
       
       
-      <a href="/configuration/" class="md-tabs__link">
+      <a href="../configuration/" class="md-tabs__link">
         Getting started
       </a>
     </li>
@@ -166,7 +171,9 @@
     <li class="md-tabs__item">
       
       
-      <a href="/finite-volume/" class="md-tabs__link">
+        
+      
+      <a href="./" class="md-tabs__link md-tabs__link--active">
         Finite volume methods
       </a>
     </li>
@@ -189,7 +196,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/." title="Subaerial Drainage System Model (SaDS)" class="md-nav__button md-logo" aria-label="Subaerial Drainage System Model (SaDS)">
+    <a href=".." title="Subaerial Drainage System Model (SaDS)" class="md-nav__button md-logo" aria-label="Subaerial Drainage System Model (SaDS)">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M634.92 462.7l-288-448C341.03 5.54 330.89 0 320 0s-21.03 5.54-26.92 14.7l-288 448a32.001 32.001 0 00-1.17 32.64A32.004 32.004 0 0032 512h576c11.71 0 22.48-6.39 28.09-16.67a31.983 31.983 0 00-1.17-32.63zM320 91.18L405.39 224H320l-64 64-38.06-38.06L320 91.18z"/></svg>
@@ -206,7 +213,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/." class="md-nav__link">
+    <a href=".." class="md-nav__link">
       Home
     </a>
   </li>
@@ -238,7 +245,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/configuration/" class="md-nav__link">
+    <a href="../configuration/" class="md-nav__link">
       Configuration
     </a>
   </li>
@@ -253,10 +260,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     <label class="md-nav__link" for="nav-3">
       Finite volume methods
       <span class="md-nav__icon md-icon"></span>
@@ -273,11 +282,49 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="/finite-volume/" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Background
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
       Background
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#general-finite-volume-methods" class="md-nav__link">
+    General finite volume methods
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -287,7 +334,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/shallow_water/" class="md-nav__link">
+    <a href="../shallow_water/" class="md-nav__link">
       Shallow water equations
     </a>
   </li>
@@ -299,7 +346,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/heat_equation/" class="md-nav__link">
+    <a href="../heat_equation/" class="md-nav__link">
       Heat equation
     </a>
   </li>
@@ -317,12 +364,62 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#general-finite-volume-methods" class="md-nav__link">
+    General finite volume methods
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
-  <h1>404 - Not found</h1>
-
+                
+                
+                <h1 id="finite-volume-methods-for-conservation-laws">Finite volume methods for conservation laws</h1>
+<p>This documentation describes the implementation of first-order finite volume methods on unstructured triangular meshes to solve the shallow water, heat, and nonlinear heat equations.</p>
+<h2 id="general-finite-volume-methods">General finite volume methods</h2>
+<p>Before we solve specific examples, we should review finite volume methods. The methods here are written in a general way so that we can apply them to unstructured triangular meshes. The eventual form can be used for any shape of mesh, including regular structured meshes or unstructured mixed meshes.</p>
+<p>Consider a scalar conservation law for some quantity \(u\) of the form</p>
+<p>$$ \frac{\partial u}{\partial t} + \nabla \cdot \vec{q}(u, \nabla u) = f$$</p>
+<p>Now we integrate over a control area \(\Omega\) (this could easily be extended to a volume in 3D space),</p>
+<p>$$ \iint_\Omega \frac{\partial u}{\partial t} dA + \iint_\Omega\nabla \cdot \vec{q}(u, \nabla u)dA = \iint_\Omega f dA$$</p>
+<p>Apply the divergence theorem to the second term, and pull the time derivative out of the first integral:</p>
+<p>$$ \frac{\partial}{\partial t} \iint_\Omega u dA + \int_{\partial\Omega}\vec{q}(u, \nabla u)\cdot\vec{n}dl = \iint_\Omega f dA$$</p>
+<p>Now, let \(\bar{u}\) be the average value of \(u\) over \(\Omega\), \(F\) be the average of \(f\), and \(|\Omega|\) be the area. Then we have</p>
+<p>$$ |\Omega|\frac{\partial \bar{u}}{\partial t} + \int_{\partial\Omega}\vec{q}(u, \nabla u)\cdot\vec{n}dl = |\Omega| F$$</p>
+<p>This yields an important equation for the average value of \(u\),</p>
+<p>$$ \frac{\partial \bar{u}}{\partial t} + \frac{1}{|\Omega|}\int_{\partial\Omega}\vec{q}(u, \nabla u)\cdot\vec{n}dl = F$$</p>
+<p>This equation says that the average value of \(u\) only changes due to the net flux flowing out through the boundary (first term) or the source term \(F\). This result should not be surprising or new, but it is an important step along the way to the semi-discrete form.</p>
+<p>To discretize in space, suppose that \(\Omega\) is a polygon with \(N\) edges (extend to 3D by considering a polyhedron with \(N\) faces). Then we can break up the contour integral to be the sum of contributions from each edge. On each edge, we replace the line integral by the average value \(\vec{q}_k\) multiplied by the edge length \(l_k\). Therefore, we have</p>
+<p>$$ \frac{\partial \bar{u}}{\partial t} + \frac{1}{|\Omega|} \sum_{k=1}^N \vec{q}_k \cdot \vec{n}_k l_k = F$$</p>
+<p>This is called the semi-discrete form, since the spatial component has been discretized but the temporal component has not. Note that the method is not yet complete since we have not specified how to calculate the edge values \(\vec{q}_k\).</p>
+                
+              
               
                 
 
@@ -335,6 +432,41 @@
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../configuration/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Configuration
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../shallow_water/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Shallow water equations
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -352,22 +484,22 @@
       
     </div>
     
-      <script src="/assets/javascripts/vendor.fd16492e.min.js"></script>
-      <script src="/assets/javascripts/bundle.7836ba4d.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      <script src="../assets/javascripts/vendor.fd16492e.min.js"></script>
+      <script src="../assets/javascripts/bundle.7836ba4d.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
       
       <script>
         app = initialize({
-          base: "/",
+          base: "..",
           features: ['toc.integrate', 'navigation.tabs'],
           search: Object.assign({
-            worker: "/assets/javascripts/worker/search.4ac00218.min.js"
+            worker: "../assets/javascripts/worker/search.4ac00218.min.js"
           }, typeof search !== "undefined" && search)
         })
       </script>
       
         <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
       
-        <script src="/javascripts/extra.js"></script>
+        <script src="../javascripts/extra.js"></script>
       
     
   </body>

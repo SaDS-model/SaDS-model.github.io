@@ -171,7 +171,7 @@
     <li class="md-tabs__item">
       
       
-      <a href="shallow_water/" class="md-tabs__link">
+      <a href="finite-volume/" class="md-tabs__link">
         Finite volume methods
       </a>
     </li>
@@ -289,6 +289,18 @@
 
 
   <li class="md-nav__item">
+    <a href="finite-volume/" class="md-nav__link">
+      Background
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="shallow_water/" class="md-nav__link">
       Shallow water equations
     </a>
@@ -342,24 +354,6 @@
                 
                 <h1 id="welcome-to-the-future-home-of-the-documentation-for-the-subaerial-drainage-system-sads-model">Welcome to the future home of the documentation for the SubAerial Drainage System (SaDS) model!</h1>
 <p>This site is under construction! At the moment it holds a copy of the documentation for the <a href="https://github.com/timghill/finite-volume"><code>finite-volume</code></a> tools. Check back later for updates!</p>
-<h1 id="finite-volume-methods-for-conservation-laws">Finite volume methods for conservation laws</h1>
-<p>This documentation describes the implementation of first-order finite volume methods on unstructured triangular meshes to solve the shallow water, heat, and nonlinear heat equations.</p>
-<h2 id="general-finite-volume-methods">General finite volume methods</h2>
-<p>Before we solve specific examples, we should review finite volume methods. The methods here are written in a general way so that we can apply them to unstructured triangular meshes. The eventual form can be used for any shape of mesh, including regular structured meshes or unstructured mixed meshes.</p>
-<p>Consider a scalar conservation law for some quantity \(u\) of the form</p>
-<p>$$ \frac{\partial u}{\partial t} + \nabla \cdot \vec{q}(u, \nabla u) = f$$</p>
-<p>Now we integrate over a control area \(\Omega\) (this could easily be extended to a volume in 3D space),</p>
-<p>$$ \iint_\Omega \frac{\partial u}{\partial t} dA + \iint_\Omega\nabla \cdot \vec{q}(u, \nabla u)dA = \iint_\Omega f dA$$</p>
-<p>Apply the divergence theorem to the second term, and pull the time derivative out of the first integral:</p>
-<p>$$ \frac{\partial}{\partial t} \iint_\Omega u dA + \int_{\partial\Omega}\vec{q}(u, \nabla u)\cdot\vec{n}dl = \iint_\Omega f dA$$</p>
-<p>Now, let \(\bar{u}\) be the average value of \(u\) over \(\Omega\), \(F\) be the average of \(f\), and \(|\Omega|\) be the area. Then we have</p>
-<p>$$ |\Omega|\frac{\partial \bar{u}}{\partial t} + \int_{\partial\Omega}\vec{q}(u, \nabla u)\cdot\vec{n}dl = |\Omega| F$$</p>
-<p>This yields an important equation for the average value of \(u\),</p>
-<p>$$ \frac{\partial \bar{u}}{\partial t} + \frac{1}{|\Omega|}\int_{\partial\Omega}\vec{q}(u, \nabla u)\cdot\vec{n}dl = F$$</p>
-<p>This equation says that the average value of \(u\) only changes due to the net flux flowing out through the boundary (first term) or the source term \(F\). This result should not be surprising or new, but it is an important step along the way to the semi-discrete form.</p>
-<p>To discretize in space, suppose that \(\Omega\) is a polygon with \(N\) edges (extend to 3D by considering a polyhedron with \(N\) faces). Then we can break up the contour integral to be the sum of contributions from each edge. On each edge, we replace the line integral by the average value \(\vec{q}_k\) multiplied by the edge length \(l_k\). Therefore, we have</p>
-<p>$$ \frac{\partial \bar{u}}{\partial t} + \frac{1}{|\Omega|} \sum_{k=1}^N \vec{q}_k \cdot \vec{n}_k l_k = F$$</p>
-<p>This is called the semi-discrete form, since the spatial component has been discretized but the temporal component has not. Note that the method is not yet complete since we have not specified how to calculate the edge values \(\vec{q}_k\).</p>
                 
               
               
