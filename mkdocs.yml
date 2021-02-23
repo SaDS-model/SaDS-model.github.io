@@ -1,4 +1,4 @@
-site_name: 'SaDS model'
+site_name: 'Subaerial Drainage System Model (SaDS)'
 theme:
     name: material
     icon:
