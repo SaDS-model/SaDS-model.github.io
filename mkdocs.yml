@@ -7,6 +7,9 @@ theme:
       - sheme: default
         primary: cyan
         accent: red
+    features:
+      - toc.integrate
+      - navigation.tabs
 
 # Required to load the MathJax javascript for the mdx_math.py
 extra_javascript:
@@ -14,9 +17,11 @@ extra_javascript:
         - 'javascripts/extra.js'
 nav:
         - Home: index.md
-        - shallow_water.md
-        - heat_equation.md
-        - configuration.md
+        - Getting started:
+                - Configuration: configuration.md
+        - Finite volume methods:
+                - Shallow water equations: shallow_water.md
+                - Heat equation: heat_equation.md
           
 markdown_extensions:
         - pymdownx.highlight
