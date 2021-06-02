@@ -1,16 +1,19 @@
 # Model configuration
 This page describes the configuration options available. These options are all specified in a simple structure (let's call it `params`).
 
+Most of these options are set by the `get_default_params` function, and they are documented reasonably well within that function.
+
 ## Specifying your domain and forcing
-Specify melt rates (in m w.e./year) as function handles with a call signature `melt(t)`, as fields:
+Specify melt rates (in m w.e./year) as function handles with a call signature `melt(t)`, and provide moulin locations with fields:
 
 | Name | Size | Description |
 | - | - | - |
 | `ms` | `n_elements x 1` | Sheet melt rate |
 | `mc` | `n_edges x 1` | Channel melt rate |
 | `msc`| `n_edges x 1` | Sheet melt rate interpolated to edges, used to lower channel lips |
+| `moulins` | `n_nodes x 1` | Indices of nodes with moulins |
 
-The mesh is specified as `params.dmesh`. The elevation is used to calculate initial conditions.
+You must set this forcing yourself since the model has no way of predicting what forcing you want. Moulins are specified as a sparse array (or full array) that is zero where there is no moulin and 1 when there is a moulin at that node.
 
 ## Initial conditions
 Initial conditions are specified in a structure `Y0` with fields
@@ -24,7 +27,11 @@ Initial conditions are specified in a structure `Y0` with fields
 | `phic` | `n_edges x 1` | Channel potential |
 | `Vm` | `n_moulins x 1` | Moulin storage |
 
-The moulin storage (`Vm`) is just used to keep track of the total volume transferred through moulins, unlike in GlaDS where the englacial storage is an important part of the model formulation.
+
+You must set these initial conditions yourself. Note that the moulin storage (`Vm`) is just used to keep track of the total volume transferred through moulins, unlike in GlaDS where the englacial storage is an important part of the model formulation.
+
+## Time setpping
+You must provide the time span to run the model for with the field `params.tt`. This gives the times you want model outputs for, NOT the timestep of the model (see `params.solver_opts` below).
 
 ## Default values
 
@@ -43,7 +50,6 @@ These are physical parameters that you can tune to adjust the model's behaviour 
 | `alphas` | 5/4 | Sheet flow exponent | |
 | `betas`  | 3/2 | Sheet flow exponent | |
 |`ks`      | 0.5 | Sheet hydraulic conductivity | |
-| `lc` | 2 | Width of sheet contribution to channel melt | |
 | `r` | 3 | Ratio of channel width to incision depth | |
 | `Hmin` | 1e-3 | Minimum incision depth before channel melts at same rate as sheet. | |
 | `exchange_ratio` | 0.2 | Channel exchange ratio. | |

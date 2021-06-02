@@ -14,7 +14,7 @@
     
     
       
-        <title>Background - Subaerial Drainage System Model (SaDS)</title>
+        <title>Tutorial - Subaerial Drainage System Model (SaDS)</title>
       
     
     
@@ -59,7 +59,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#finite-volume-methods-for-conservation-laws" class="md-skip">
+        <a href="#tutorial" class="md-skip">
           Skip to content
         </a>
       
@@ -89,7 +89,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Background
+              Tutorial
             
           </span>
         </div>
@@ -174,7 +174,7 @@
         
       
       <a href="./" class="md-tabs__link md-tabs__link--active">
-        Finite volume methods
+        Tutorial
       </a>
     </li>
   
@@ -279,28 +279,16 @@
     
     <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     <label class="md-nav__link" for="nav-3">
-      Finite volume methods
+      Tutorial
       <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="Finite volume methods" data-md-level="1">
+    <nav class="md-nav" aria-label="Tutorial" data-md-level="1">
       <label class="md-nav__title" for="nav-3">
         <span class="md-nav__icon md-icon"></span>
-        Finite volume methods
+        Tutorial
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="./" class="md-nav__link">
-      None
-    </a>
-  </li>
-
         
           
           
@@ -317,12 +305,12 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Background
+        Tutorial
         <span class="md-nav__icon md-icon"></span>
       </label>
     
     <a href="./" class="md-nav__link md-nav__link--active">
-      Background
+      Tutorial
     </a>
     
       
@@ -339,8 +327,29 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#general-finite-volume-methods" class="md-nav__link">
-    General finite volume methods
+  <a href="#step-1-run-the-spinup-case" class="md-nav__link">
+    Step 1: Run the spinup case
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-run-the-actual-simulation" class="md-nav__link">
+    Step 2: Run the actual simulation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup-3-understand-the-outputs" class="md-nav__link">
+    Setup 3: Understand the outputs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-analyze-the-outputs" class="md-nav__link">
+    Step 4: Analyze the outputs
   </a>
   
 </li>
@@ -349,30 +358,6 @@
   
 </nav>
     
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../shallow_water/" class="md-nav__link">
-      Shallow water equations
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../heat_equation/" class="md-nav__link">
-      Heat equation
-    </a>
   </li>
 
         
@@ -405,8 +390,29 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#general-finite-volume-methods" class="md-nav__link">
-    General finite volume methods
+  <a href="#step-1-run-the-spinup-case" class="md-nav__link">
+    Step 1: Run the spinup case
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-run-the-actual-simulation" class="md-nav__link">
+    Step 2: Run the actual simulation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup-3-understand-the-outputs" class="md-nav__link">
+    Setup 3: Understand the outputs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-analyze-the-outputs" class="md-nav__link">
+    Step 4: Analyze the outputs
   </a>
   
 </li>
@@ -424,24 +430,56 @@
               
                 
                 
-                <h1 id="finite-volume-methods-for-conservation-laws">Finite volume methods for conservation laws</h1>
-<p>This documentation describes the implementation of first-order finite volume methods on unstructured triangular meshes to solve the shallow water, heat, and nonlinear heat equations.</p>
-<h2 id="general-finite-volume-methods">General finite volume methods</h2>
-<p>Before we solve specific examples, we should review finite volume methods. The methods here are written in a general way so that we can apply them to unstructured triangular meshes. The eventual form can be used for any shape of mesh, including regular structured meshes or unstructured mixed meshes.</p>
-<p>Consider a scalar conservation law for some quantity \(u\) of the form</p>
-<p>$$ \frac{\partial u}{\partial t} + \nabla \cdot \vec{q}(u, \nabla u) = f$$</p>
-<p>Now we integrate over a control area \(\Omega\) (this could easily be extended to a volume in 3D space),</p>
-<p>$$ \iint_\Omega \frac{\partial u}{\partial t} dA + \iint_\Omega\nabla \cdot \vec{q}(u, \nabla u)dA = \iint_\Omega f dA$$</p>
-<p>Apply the divergence theorem to the second term, and pull the time derivative out of the first integral:</p>
-<p>$$ \frac{\partial}{\partial t} \iint_\Omega u dA + \int_{\partial\Omega}\vec{q}(u, \nabla u)\cdot\vec{n}dl = \iint_\Omega f dA$$</p>
-<p>Now, let \(\bar{u}\) be the average value of \(u\) over \(\Omega\), \(F\) be the average of \(f\), and \(|\Omega|\) be the area. Then we have</p>
-<p>$$ |\Omega|\frac{\partial \bar{u}}{\partial t} + \int_{\partial\Omega}\vec{q}(u, \nabla u)\cdot\vec{n}dl = |\Omega| F$$</p>
-<p>This yields an important equation for the average value of \(u\),</p>
-<p>$$ \frac{\partial \bar{u}}{\partial t} + \frac{1}{|\Omega|}\int_{\partial\Omega}\vec{q}(u, \nabla u)\cdot\vec{n}dl = F$$</p>
-<p>This equation says that the average value of \(u\) only changes due to the net flux flowing out through the boundary (first term) or the source term \(F\). This result should not be surprising or new, but it is an important step along the way to the semi-discrete form.</p>
-<p>To discretize in space, suppose that \(\Omega\) is a polygon with \(N\) edges (extend to 3D by considering a polyhedron with \(N\) faces). Then we can break up the contour integral to be the sum of contributions from each edge. On each edge, we replace the line integral by the average value \(\vec{q}_k\) multiplied by the edge length \(l_k\). Therefore, we have</p>
-<p>$$ \frac{\partial \bar{u}}{\partial t} + \frac{1}{|\Omega|} \sum_{k=1}^N \vec{q}_k \cdot \vec{n}_k l_k = F$$</p>
-<p>This is called the semi-discrete form, since the spatial component has been discretized but the temporal component has not. Note that the method is not yet complete since we have not specified how to calculate the edge values \(\vec{q}_k\).</p>
+                <h1 id="tutorial">Tutorial</h1>
+<p>This tutorial takes you through running a simple case using synthetic geometry and forcing. This tutorial is based in the <code>tests/SHMIP/</code> directory. There's a handful of MATLAB files here, so it's useful to talk about what each does:</p>
+<ul>
+<li><code>get_baseline_setup.m</code> sets most of the parameters for the simulation.</li>
+<li><code>shmip_elevation.m</code> calculates the surface elevation for the provided coordinate matrix</li>
+<li><code>shmip_melt.m</code> calculates surface melt using the SHMIP melt parameterization.</li>
+<li><code>plot_forcing.m</code> plots the SHMIP melt forcing</li>
+<li><code>spinup_baseline.</code>: This script runs the "spinup" simulation. Since SaDS builds a supraglacial river network, it's convenient to run the model for a short time (e.g. 12 hours) with spatially uniform channel dimensions to get an estimate of how much flow is through each edge in the mesh.</li>
+<li><code>run_test.m</code>: This script is that actually runs the SaDS model. Take a look in it - it doesn't do that much actually since the parameters are set by a different function. It uses the results of the <code>spinup_baseline.m</code> script to calculate initial channel dimensions.</li>
+<li><code>pickup_HC.m</code> is a helper function that calculates the channel incision depth for the <code>run_test.m</code> script.</li>
+</ul>
+<p>The <code>data/</code> folder holds a text file providing moulin locations and the <code>test_mesh.mat</code> file with the triangular mesh.</p>
+<p>Note that this case takes some time to run so it might be more convenient to run it on a Compute Canada machine.</p>
+<h2 id="step-1-run-the-spinup-case">Step 1: Run the spinup case</h2>
+<p>As mentioned above, we run the model for 12 hours with a spatially uniform channel network to get an approximation of the steady state flow through the channels.</p>
+<p>First, make sure you have a directory <code>outputs/</code>. This is where the model outputs will be saved.</p>
+<p>Now, open the file <code>spinup_baseline.m</code>. This script runs the spinup simulation. See how most of the parameters and initial conditions are set by the <code>get_baseline_setup.m</code> function. Doing it this way ensures that the spinup and actual simulations use the same parameters. Take a look at this function to see what it does.</p>
+<p>You should be able to run the spinup case now! If you are running locally (on your own computer as opposed to a Compute Canada machine), just run the script using MATLAB as usual. It only takes a few minutes to run.</p>
+<p>If you are on a Compute Canada machine, submit the <code>submit_spinup.sh</code> script:</p>
+<div class="highlight"><pre><span></span><code>sbatch submit_spinup.sh
+</code></pre></div>
+<h2 id="step-2-run-the-actual-simulation">Step 2: Run the actual simulation</h2>
+<p>Now we can run the actual simulation. As with the spinup case, look at the script <code>run_test.m</code> to see what it does.</p>
+<p>Now, run it using the SLURM script <code>submit_test.sh</code> or as usual if you are running locally. Note this case takes longer to run (up to 30 minutes) so you may want to do it on the Compute Canada machines.</p>
+<h2 id="setup-3-understand-the-outputs">Setup 3: Understand the outputs</h2>
+<p>While the model is running, you'll notice it produces outputs on the screen (or in the log file) tha t look like</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt; spinup_baseline
+Using RK time stepping
+[             ] (t_model = 15724800.000000, t_wall = 0.515082, AbsConv = 0.000228)
+[.            ] (t_model = 15728400.000000, t_wall = 11.874495, AbsConv = 0.027170)
+[..           ] (t_model = 15732000.000000, t_wall = 23.229882, AbsConv = 0.086851)
+[...          ] (t_model = 15735600.000000, t_wall = 34.564978, AbsConv = 0.073070)
+[....         ] (t_model = 15739200.000000, t_wall = 46.411199, AbsConv = 0.088599)
+[.....        ] (t_model = 15742800.000000, t_wall = 57.860533, AbsConv = 0.137125)
+[......       ] (t_model = 15746400.000000, t_wall = 69.210069, AbsConv = 0.138315)
+[.......      ] (t_model = 15750000.000000, t_wall = 80.684014, AbsConv = 0.160151)
+[........     ] (t_model = 15753600.000000, t_wall = 92.567800, AbsConv = 0.257627)
+[.........    ] (t_model = 15757200.000000, t_wall = 103.861314, AbsConv = 0.197309)
+[..........   ] (t_model = 15760800.000000, t_wall = 115.075304, AbsConv = 0.218257)
+[...........  ] (t_model = 15764400.000000, t_wall = 126.539341, AbsConv = 0.230892)
+[.............] (t_model = 15768000.000000, t_wall = 138.402231, AbsConv = 0.231452)
+</code></pre></div>
+<p>This provides information on:</p>
+<ul>
+<li><code>t_model</code>: The timestep (in seconds) the model is currently on. This lets you measure the model's progress. The progress is also visualized with the dots within the square brackets.</li>
+<li><code>t_wall</code>: The walltime (in seconds) since the model was started.</li>
+<li><code>AbsConv</code>: This is the maximum absolute value of the time derivative of water depth multiplied by the timestep. Essentally, this is how much the water depth is changing within a single timestep. This lets you monitor how well it is doing with the timestep you have chosen.</li>
+</ul>
+<h2 id="step-4-analyze-the-outputs">Step 4: Analyze the outputs</h2>
+<p>Look through the script <code>analyze_outputs.m</code> to see what it does. The <code>element_plot</code> and <code>edge_plot</code> functions are really just interfaces to MATLAB plotting functions but they make your life easy dealing with this weird triangular mesh data. For the most part, you will be using these functions along with standard line plots to visualize your outputs.</p>
                 
               
               
@@ -460,7 +498,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="./" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../configuration/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -469,25 +507,11 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                None
+                Configuration
               </div>
             </div>
           </a>
         
-        
-          <a href="../shallow_water/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-footer-nav__title">
-              <div class="md-ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
-                Shallow water equations
-              </div>
-            </div>
-            <div class="md-footer-nav__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-            </div>
-          </a>
         
       </nav>
     </div>

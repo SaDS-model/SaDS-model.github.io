@@ -20,11 +20,8 @@ nav:
         - Getting started:
                 - Startup guide: startup.md
                 - Configuration: configuration.md
-        - Finite volume methods:
-                - finite-volume.md
-                - Background: finite-volume.md
-                - Shallow water equations: shallow_water.md
-                - Heat equation: heat_equation.md
+        - Tutorial:
+            - tutorial.md
 
 markdown_extensions:
         - pymdownx.highlight
