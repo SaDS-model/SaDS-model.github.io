@@ -14,7 +14,7 @@
     
     
       
-        <title>Configuration - Subaerial Drainage System Model (SaDS)</title>
+        <title>Startup guide - Subaerial Drainage System Model (SaDS)</title>
       
     
     
@@ -59,7 +59,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#model-configuration" class="md-skip">
+        <a href="#startup-guide" class="md-skip">
           Skip to content
         </a>
       
@@ -89,7 +89,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Configuration
+              Startup guide
             
           </span>
         </div>
@@ -160,7 +160,7 @@
       
         
       
-      <a href="../startup/" class="md-tabs__link md-tabs__link--active">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
         Getting started
       </a>
     </li>
@@ -245,18 +245,6 @@
           
           
 
-
-  <li class="md-nav__item">
-    <a href="../startup/" class="md-nav__link">
-      Startup guide
-    </a>
-  </li>
-
-        
-          
-          
-          
-
   
 
 
@@ -267,53 +255,22 @@
       
     
     
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Configuration
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-    
     <a href="./" class="md-nav__link md-nav__link--active">
-      Configuration
+      Startup guide
     </a>
     
-      
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#specifying-your-domain-and-forcing" class="md-nav__link">
-    Specifying your domain and forcing
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#initial-conditions" class="md-nav__link">
-    Initial conditions
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#default-values" class="md-nav__link">
-    Default values
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../configuration/" class="md-nav__link">
+      Configuration
+    </a>
   </li>
 
         
@@ -412,35 +369,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#specifying-your-domain-and-forcing" class="md-nav__link">
-    Specifying your domain and forcing
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#initial-conditions" class="md-nav__link">
-    Initial conditions
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#default-values" class="md-nav__link">
-    Default values
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -452,309 +380,8 @@
               
                 
                 
-                <h1 id="model-configuration">Model configuration</h1>
-<p>This page describes the configuration options available. These options are all specified in a simple structure (let's call it <code>params</code>).</p>
-<h2 id="specifying-your-domain-and-forcing">Specifying your domain and forcing</h2>
-<p>Specify melt rates (in m w.e./year) as function handles with a call signature <code>melt(t)</code>, as fields:</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Size</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>ms</code></td>
-<td><code>n_elements x 1</code></td>
-<td>Sheet melt rate</td>
-</tr>
-<tr>
-<td><code>mc</code></td>
-<td><code>n_edges x 1</code></td>
-<td>Channel melt rate</td>
-</tr>
-<tr>
-<td><code>msc</code></td>
-<td><code>n_edges x 1</code></td>
-<td>Sheet melt rate interpolated to edges, used to lower channel lips</td>
-</tr>
-</tbody>
-</table>
-<p>The mesh is specified as <code>params.dmesh</code>. The elevation is used to calculate initial conditions.</p>
-<h2 id="initial-conditions">Initial conditions</h2>
-<p>Initial conditions are specified in a structure <code>Y0</code> with fields</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Size</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>hs</code></td>
-<td><code>n_elements x 1</code></td>
-<td>Sheet water depth</td>
-</tr>
-<tr>
-<td><code>zs</code></td>
-<td><code>n_elements x 1</code></td>
-<td>Sheet elevation</td>
-</tr>
-<tr>
-<td><code>hc</code></td>
-<td><code>n_edges x 1</code></td>
-<td>Channel water depth</td>
-</tr>
-<tr>
-<td><code>Hc</code></td>
-<td><code>n_edges x 1</code></td>
-<td>Channel incision depth (set &gt;0 to avoid <code>NaN</code>)</td>
-</tr>
-<tr>
-<td><code>phic</code></td>
-<td><code>n_edges x 1</code></td>
-<td>Channel potential</td>
-</tr>
-<tr>
-<td><code>Vm</code></td>
-<td><code>n_moulins x 1</code></td>
-<td>Moulin storage</td>
-</tr>
-</tbody>
-</table>
-<p>The moulin storage (<code>Vm</code>) is just used to keep track of the total volume transferred through moulins, unlike in GlaDS where the englacial storage is an important part of the model formulation.</p>
-<h2 id="default-values">Default values</h2>
-<p>SaDS has an extensive list of input parameters and options to configure your model runs. The table below lists the parameters, default values, and some notes about changing their values. Parameters are changable as <code>params.Name</code>, where <code>Name</code> is the name given in the tables below.</p>
-<p><strong>Tunable parameters</strong></p>
-<p>These are physical parameters that you can tune to adjust the model's behaviour (in contrast to physical constants that should not be changed).</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Default Value</th>
-<th>Description</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>alphac</code></td>
-<td>5/3</td>
-<td>Channel flow exponent</td>
-<td></td>
-</tr>
-<tr>
-<td><code>betac</code></td>
-<td>3/2</td>
-<td>Channel flow exponent</td>
-<td></td>
-</tr>
-<tr>
-<td><code>kc</code></td>
-<td>10</td>
-<td>Channel hydraulic conductivity</td>
-<td></td>
-</tr>
-<tr>
-<td><code>alphas</code></td>
-<td>5/4</td>
-<td>Sheet flow exponent</td>
-<td></td>
-</tr>
-<tr>
-<td><code>betas</code></td>
-<td>3/2</td>
-<td>Sheet flow exponent</td>
-<td></td>
-</tr>
-<tr>
-<td><code>ks</code></td>
-<td>0.5</td>
-<td>Sheet hydraulic conductivity</td>
-<td></td>
-</tr>
-<tr>
-<td><code>lc</code></td>
-<td>2</td>
-<td>Width of sheet contribution to channel melt</td>
-<td></td>
-</tr>
-<tr>
-<td><code>r</code></td>
-<td>3</td>
-<td>Ratio of channel width to incision depth</td>
-<td></td>
-</tr>
-<tr>
-<td><code>Hmin</code></td>
-<td>1e-3</td>
-<td>Minimum incision depth before channel melts at same rate as sheet.</td>
-<td></td>
-</tr>
-<tr>
-<td><code>exchange_ratio</code></td>
-<td>0.2</td>
-<td>Channel exchange ratio.</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Switches</strong></p>
-<p>These options turn on and off features or switch between different methods.</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Default Value</th>
-<th>Other choices</th>
-<th>Description</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>exchange</code></td>
-<td><code>true</code></td>
-<td><code>false</code></td>
-<td>Choose whether to allow mass exchange between sheet and channels</td>
-<td></td>
-</tr>
-<tr>
-<td><code>model</code></td>
-<td><code>coupled</code></td>
-<td><code>sheet</code>, <code>channel</code></td>
-<td>Choose whether to run full (coupled) model, or sheet-only or channel-only.</td>
-<td></td>
-</tr>
-<tr>
-<td><code>Xi_s</code></td>
-<td><code>true</code></td>
-<td><code>false</code></td>
-<td>Heat dissipation in sheets. Set to 0 for no heat dissipation, 1 to allow dissipation.</td>
-<td></td>
-</tr>
-<tr>
-<td><code>overwrite</code></td>
-<td><code>false</code></td>
-<td><code>true</code></td>
-<td>Overwrite existing output files. If <code>false</code> and a file exists, append the time to the end of the filename.</td>
-<td></td>
-</tr>
-<tr>
-<td><code>stop_on_warning</code></td>
-<td>false</td>
-<td>true</td>
-<td>Switch to raise an error if parameter validation fails</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Solver parameters</strong></p>
-<p>These options change the numerical ODE solver or control its behaviour.</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Default Value</th>
-<th>Description</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>solver</code></td>
-<td><code>odeRK</code></td>
-<td>Which ODE solver function to use. Could also be <code>ode45</code>, or any other Matlab solver.</td>
-<td><code>odeRK</code> runs the best.</td>
-</tr>
-<tr>
-<td><code>solver_opts</code></td>
-<td></td>
-<td>Options needed for solvers. For <code>odeRK</code>, this needs to have the timestep as field <code>dt</code></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Output fields</strong></p>
-<p>The model lets you choose which fields to save:</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>dhsdt</code></td>
-<td>Time derivative of water sheet thickness</td>
-</tr>
-<tr>
-<td><code>dhsdt_div</code></td>
-<td>Divergence term of water sheet thickness time derivative</td>
-</tr>
-<tr>
-<td><code>dhcdt</code></td>
-<td>Time derivative of channel depth</td>
-</tr>
-<tr>
-<td><code>dhcdt_area</code></td>
-<td>Area-change component of channel depth rate of change</td>
-</tr>
-<tr>
-<td><code>dhcdt_div</code></td>
-<td>Divergence component of channel depth rate of change</td>
-</tr>
-<tr>
-<td><code>dHcdt</code></td>
-<td>Time derivative of channel incision depth</td>
-</tr>
-<tr>
-<td><code>phis_x</code></td>
-<td>Sheet potential gradient x-component</td>
-</tr>
-<tr>
-<td><code>phis_y</code></td>
-<td>Sheet potential gradient y-component</td>
-</tr>
-<tr>
-<td><code>qx_sheet</code></td>
-<td>Sheet flow in x-direction</td>
-</tr>
-<tr>
-<td><code>qy_sheet</code></td>
-<td>Sheet flow in y-direction</td>
-</tr>
-<tr>
-<td><code>dphic_ds</code></td>
-<td>Channel potential slope</td>
-</tr>
-<tr>
-<td><code>qc</code></td>
-<td>Channel volume flow</td>
-</tr>
-<tr>
-<td><code>phic_node</code></td>
-<td>Potential on nodes</td>
-</tr>
-<tr>
-<td><code>Xi_c</code></td>
-<td>Potential energy dissipation</td>
-</tr>
-<tr>
-<td><code>exchange_frac</code></td>
-<td>Exchange fraction</td>
-</tr>
-<tr>
-<td><code>m_moulin</code></td>
-<td>Moulin input rates</td>
-</tr>
-</tbody>
-</table>
+                <h1 id="startup-guide">Startup guide</h1>
+<p>Guide to getting the model up and running.</p>
                 
               
               
@@ -773,7 +400,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../startup/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href=".." class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -782,19 +409,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Startup guide
+                Home
               </div>
             </div>
           </a>
         
         
-          <a href="../finite-volume/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../configuration/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                None
+                Configuration
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">
