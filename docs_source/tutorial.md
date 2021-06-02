@@ -62,3 +62,8 @@ This provides information on:
 
 ## Step 4: Analyze the outputs
 Look through the script `analyze_outputs.m` to see what it does. The `element_plot` and `edge_plot` functions are really just interfaces to MATLAB plotting functions but they make your life easy dealing with this weird triangular mesh data. For the most part, you will be using these functions along with standard line plots to visualize your outputs.
+
+You should end up with beautiful figures like:
+
+![](images/fig_hs.png)
+![](images/fig_qc.png)

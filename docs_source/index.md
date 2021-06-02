@@ -10,3 +10,5 @@ For more details about the mathematical basis of the model, see the paper (TBD).
  * [Startup](startup.md): A guide for getting started with the model.
  * [Configuration](configuration.md): Details on all possible model parameters, switches, and inputs
  * [Tutorial](tutorial.md): A hands-on tutorial to run the model
+
+![](images/sads_graphic.png)
